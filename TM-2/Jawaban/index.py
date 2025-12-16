@@ -91,6 +91,8 @@ def train_and_test():
         print("No faces detected in test set.")
 
 def predict_custom_image():
+
+    face_recognizer.read(model_path)
     if face_recognizer is None:
         print("Model not trained yet. Please choose option 1 first.")
         return
