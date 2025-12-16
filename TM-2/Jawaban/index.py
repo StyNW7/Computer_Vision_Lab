@@ -7,6 +7,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 face_recognizer = None
 person_name = []
+model_path = './face_recognizer_model.xml'
 
 def train_and_test():
     global face_recognizer, person_name
@@ -16,7 +17,7 @@ def train_and_test():
     face_list = []
     class_list = []
     
-    train_path = 'dataset/train'
+    train_path = '../Soal/images/train'
 
     # Ambil daftar nama dari folder train
     person_name = os.listdir(train_path)
@@ -42,11 +43,12 @@ def train_and_test():
     # Create & train model LBPH
     face_recognizer = cv2.face.LBPHFaceRecognizer_create()
     face_recognizer.train(face_list, np.array(class_list))
+    face_recognizer.save(model_path)
     print("Training Completed.")
     
     # Step 2 : Testing
     print("Start Testing for Accuracy...")
-    test_path = 'dataset/test'
+    test_path = '../Soal/images/test'
 
     total_images = 0
     correct_predictions = 0

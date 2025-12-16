@@ -6,9 +6,9 @@ import numpy as np
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-train_path = 'images/train'
-test_path = 'images/test'
-model_path = 'face_recognizer_model.xml'
+train_path = './images/train'
+test_path = './images/test'
+model_path = './face_recognizer_model.xml'
 
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 
@@ -108,60 +108,3 @@ def main_menu():
             menu2(path)
 
 main_menu()
-
-# menu2('D:/QuizPrep/images/test/robert/1.jpg')
-        
-    
-
-
-#test
-# test_dir = 'images/test'
-# classes = os.listdir(test_dir)
-# for index, person_name in enumerate(classes):
-#     class_path = train_dir + '/' + person_name
-#     for image_path in os.listdir(class_path):
-#         full_img_path = class_path + '/' + image_path
-#         img_bgr = cv2.imread(full_img_path)
-#         img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-#         detected_faces = face_cascade.detectMultiScale(img_gray, scaleFactor=1.2, minNeighbors=5)
-        
-#         if len(detected_faces) < 1:
-#             continue
-        
-#         for rect in detected_faces:
-#             x, y, w, h = rect
-#             face_img = img_gray[y:y+w, x:x+h]
-            
-#             res, confidence = face_recognizer.predict(face_img)
-#             confidence = math.floor(confidence * 100) / 100
-#             cv2.rectangle(img_bgr, (x, y), (x+w, y+h), (0, 255, 0), 1)
-#             text = classes[res] + ' ' + str(confidence) + '%'
-#             cv2.putText(img_bgr, text, (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 1)
-            
-#             cv2.imshow('result', img_bgr)
-#             cv2.waitKey(0)
-
-
-# for image_path in os.listdir(test_dir):
-#     full_img_path = test_dir + '/' + image_path
-#     img_bgr = cv2.imread(full_img_path)
-#     img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-    
-#     detected_faces = face_cascade.detectMultiScale(img_gray, scaleFactor=1.2, minNeighbors=5)
-        
-#     if len(detected_faces) < 1:
-#         continue
-    
-#     for rect in detected_faces:
-#         x, y, w, h = rect
-#         face_img = img_gray[y:y+w, x:x+h]
-            
-#         res, confidence = face_recognizer.predict(face_img)
-#         confidence = math.floor(confidence * 100) / 100
-        
-#         cv2.rectangle(img_bgr, (x, y), (x+w, y+h), (0, 255, 0), 1)
-#         text = classes[res] + ' ' + str(confidence) + '%'
-#         cv2.putText(img_bgr, text, (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 1)
-        
-#         cv2.imshow('result', img_bgr)
-#         cv2.waitKey(0)
