@@ -58,7 +58,7 @@ def train_and_test():
         if true_name in person_name:
             true_id = person_name.index(true_name)
         else:
-            continue 
+            continue
 
         full_path = test_path + '/' + true_name
         

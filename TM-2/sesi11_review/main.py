@@ -41,7 +41,7 @@ def menu1():
     total_prediction = 0
     correct_prediction = 0
 
-    classes = os.listdir(train_path)
+    classes = os.listdir(test_path)
     for label, person_name in enumerate(classes):
         person_test_path = os.path.join(test_path, person_name)
         
@@ -67,6 +67,11 @@ def menu1():
 
 #predict
 def menu2(img_path):
+
+    if not os.path.exists(model_path):
+        print ("train model first")
+        return
+
     face_recognizer.read(model_path)
     test_img = img_path
 
